@@ -1,0 +1,161 @@
+\documentclass[10pt]{beamer}
+\usepackage[orientation=landscape,size=custom,width=16,height=9,scale=0.5,debug]{beamerposter}
+\usepackage[french]{babel}
+\usepackage[OT1]{fontenc}
+\usepackage{textcomp}
+\usepackage{csquotes}
+\usepackage{dirtytalk}
+\usepackage{float}
+\usepackage{framed}
+\usepackage{listings}
+\usepackage{adjustbox}
+\usepackage{array}
+\usepackage{epstopdf}
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+\newcommand{\ousommesnous}{Où sommes-nous ?}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    anchorcolor = .,
+    linkcolor = .,
+    urlcolor = blue,
+}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+\usepackage{color}
+\lstloadlanguages{C,C++,csh,Java}
+
+\definecolor{red}{rgb}{0.6,0,0} 
+\definecolor{blue}{rgb}{0,0,0.6}
+\definecolor{green}{rgb}{0,0.8,0}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+\lstset{
+language=csh,
+basicstyle=\tiny\ttfamily,
+numbers=left,
+numberstyle=\tiny,
+numbersep=5pt,
+tabsize=2,
+extendedchars=true,
+breaklines=true,
+frame=b,
+stringstyle=\color{blue}\ttfamily,
+showspaces=false,
+showtabs=false,
+xleftmargin=17pt,
+framexleftmargin=17pt,
+framexrightmargin=5pt,
+framexbottommargin=4pt,
+commentstyle=\color{green},
+morecomment=[l]{//}, %use comment-line-style!
+morecomment=[s]{/*}{*/}, %for multiline comments
+showstringspaces=false,
+morekeywords={ abstract, event, new, struct,
+as, explicit, null, switch,
+base, extern, object, this,
+bool, false, operator, throw,
+break, finally, out, true,
+byte, fixed, override, try,
+case, float, params, typeof,
+catch, for, private, uint,
+char, foreach, protected, ulong,
+checked, goto, public, unchecked,
+class, if, readonly, unsafe,
+const, implicit, ref, ushort,
+continue, in, return, using,
+decimal, int, sbyte, virtual,
+default, interface, sealed, volatile,
+delegate, internal, short, void,
+do, is, sizeof, while,
+double, lock, stackalloc,
+else, long, static,
+enum, namespace, string},
+keywordstyle=\color{cyan},
+identifierstyle=\color{red}
+}
+
+\definecolor{main}{RGB}{35,54,59}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{main}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
+
+
+\title{Développement d'applications mobiles - TP}
+\subtitle{3° Bachelier en techniques graphiques}
+\date{\today}
+\author{Daniel Schreurs}
+\institute{Haute École de Province de Liège}
+%\titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.eps}}
+
+\begin{document}
+
+\maketitle
+
+\setbeamerfont{subsection in toc}{size=\small}
+\begin{frame}[allowframebreaks]{Table des matières}
+    \setbeamertemplate{section in toc}[sections numbered]
+    \tableofcontents
+\end{frame}
+
+
+% \section{Dart}
+% \subsection{Présentation}
+% \begin{frame}[fragile,t]{\secname : \subsecname}
+%     \begin{itemize}
+%         \item Publié en 2011 par Google;
+%         \item Objectif : remplacer JavaScript;
+%         \item Dart peut être compilé en JavaScript;
+%         \item Grâce à Flutter, on s'attend à ce qu'il reçoive beaucoup d'attention et de contributions.
+%     \end{itemize}
+% \end{frame}
+
+% \subsection{Syntaxe et structure}
+% \begin{frame}[fragile,t]{\secname : \subsecname}
+%     \begin{itemize}
+%         \item Orienté objet
+%         \item Se situe entre Java et JavaScript.
+%         \item Les éléments peuvent être globaux ("top-level") ou attachés à une classe.
+%     \end{itemize}
+%     \begin{lstlisting}[caption={Class vs main},language=C]
+%         void main () {
+%             MyNumber number = new MyNumber(42); print(number.value);
+%         }
+%         class MyNumber {
+%             int value; MyNumber(int number) {
+%             this.value = number; }
+%         }
+%     \end{lstlisting}
+% \end{frame}
+
+% \begin{frame}[fragile,t]{\secname : \subsecname}
+\begin{itemize}
+    \item Tout est un objet
+    \item $null$ par défaut.
+    \item $null$ est une instance de la classe Null.
+\end{itemize}
+\begin{lstlisting}[caption={Visibilité},language=C]
+    void main () {
+    MyNumber number = MyNumber(null, (int number) =>
+    print(’the number is: ’+ (number?.toString() ?? ’unset’)));
+
+    number.print(); 
+    }
+
+    class MyNumber {
+        int value;
+        Function printer; 
+        MyNumber(this.value ,
+        void print() => printer(value);
+    }
+    \end{lstlisting}
+%\end{frame}
+
+\end{document}
