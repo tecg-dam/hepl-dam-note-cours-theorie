@@ -1,0 +1,202 @@
+\documentclass[10pt]{beamer}
+
+\input{/Users/daniel/Documents/LaTeX/beamer-style.tex}
+
+
+\title{Développement d'applications mobiles}
+\subtitle{Chapitre 3 - Flutter - concepts de base}
+\date{\today}
+\author{Daniel Schreurs}
+\institute{Haute École de la Province de Liège}
+
+\begin{document}
+
+\maketitle
+
+
+\setbeamerfont{subsection in toc}{size=\small}
+\begin{frame}[allowframebreaks]{Table des matières}
+    \setbeamertemplate{section in toc}[sections numbered]
+    \tableofcontents
+\end{frame}
+
+\section{Introduction}
+\subsection{In Flutter, everything is a widget.}
+\begin{frame}[fragile,t]{\secname : \subsecname}
+    \begin{itemize}
+        \item Flutter est composé de widgets...beaucoup de widgets;
+        \item Un widget permet de décrire :
+              \begin{itemize}
+                  \item Une interface;
+                  \item Une fonctionnalité;
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+
+\section{Material Component}
+\subsection{Scaffol}
+\begin{frame}[fragile,t]{\secname : \subsecname}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item Le \href{https://api.flutter.dev/flutter/material/Scaffold-class.html}{Scaffol}  est la structure de base des applications Android;
+                \item Un ensemble pouvant regrouper plusieurs éléments comme :
+                      \begin{itemize}
+                          \item Une \href{https://api.flutter.dev/flutter/material/AppBar-class.html}{\emph{appBar}};
+                          \item Un \href{https://api.flutter.dev/flutter/material/Scaffold/body.html}{\emph{body}};
+                          \item une \href{https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html}{\emph{BottomNavigationBar}};
+                          \item Et \href{https://api.flutter.dev/flutter/material/material-library.html}{beaucoup d'autres encore}...
+                      \end{itemize}
+            \end{itemize}
+            \begin{lstlisting}[language=C]
+    return Scaffold(
+        body: Text("Hey"),
+    );
+        \end{lstlisting}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}
+                \begin{center}
+                    \includegraphics[width=0.60\textwidth]{../assets/img/Scaffold.jpg}
+                \end{center}
+            \end{figure}\end{column}
+    \end{columns}
+\end{frame}
+
+
+\subsection{AppBar}
+\begin{frame}[fragile,t]{\secname : \subsecname}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item L'\href{https://api.flutter.dev/flutter/material/AppBar-class.html}{AppBar} est un widget;
+                \item Se situer en haut de l’écran;
+                \item Enfant de \emph{Scaffold}.
+            \end{itemize}
+            \begin{lstlisting}[language=C]
+    return Scaffold(
+        appBar: AppBar(
+            title: Text(widget.title),
+        ),
+        body: Text("Hey"),
+    );
+    \end{lstlisting}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{figure}
+                \begin{center}
+                    \includegraphics[width=0.60\textwidth]{../assets/img/AppBar.jpg}
+                \end{center}
+            \end{figure}\end{column}
+    \end{columns}
+\end{frame}
+
+\subsection{floatingActionButton}
+\begin{frame}[fragile,t]{\secname : \subsecname}
+    \begin{columns}
+        \begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item Le \href{https://api.flutter.dev/flutter/material/FloatingActionButton-class.html}{floatingActionButton} est un widget;
+                \item Consiste en un bouton flottant;
+                \item Qui peut être placé : centerDocked, bottomNavigationBar, centerFloat, endDocked,bottomNavigationBar, bottomNavigationBar, endTop,miniStartTop, startTop.
+            \end{itemize}
+
+            \begin{lstlisting}[language=C]
+    floatingActionButton: FloatingActionButton(
+        onPressed: () => {print("Bonjour")},
+        child: const Icon(Icons.add),
+        ),
+    \end{lstlisting}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{figure}
+                \begin{center}
+                    \includegraphics[width=0.60\textwidth]{../assets/img/floatingActionButton.jpg}
+                \end{center}
+            \end{figure}\end{column}
+    \end{columns}
+\end{frame}
+
+\subsection{bottomNavigationBar}
+\begin{frame}[fragile]{\secname : \subsecname}
+    \begin{columns}
+        \begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item La \href{https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html}{bottomNavigationBar} est une barre de navigation;
+                \item Située en bas de l’écran;
+                \item Par défaut, sa taille est nulle;
+                \item Il convient d’y inclure un Container par exemple;
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{figure}
+                \begin{center}
+                    \includegraphics[width=0.60\textwidth]{../assets/img/floatingActionButton.jpg}
+                \end{center}
+            \end{figure}\end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{\secname : \subsecname}
+    \begin{lstlisting}[language=C]
+floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+bottomNavigationBar: BottomAppBar(
+    shape: CircularNotchedRectangle(),
+    child: Container(
+    height: 50,
+    child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+        IconButton(
+            onPressed: pressed,
+            icon: Icon(Icons.add_location),
+        ),
+        IconButton(
+            onPressed: pressed,
+            icon: Icon(Icons.forward),
+        ),],),),),
+    \end{lstlisting}
+\end{frame}
+
+
+\section{Cupertino (Style iOS)}
+\begin{frame}[fragile]{\secname}
+    \begin{itemize}
+        \item Style présent sur iOS;
+        \item Nom donné en référence à la ville où se situe le siège d’Apple;
+    \end{itemize}
+    Nous ne couvrons pas ces widgets.
+\end{frame}
+
+\section{Détection de la plateforme}
+\begin{frame}[fragile]{\secname}
+    \begin{itemize}
+        \item Pour se fondre dans le style de son système d’exploitation hôte, il convient alors de lui faire posséder les deux styles : Material Design et Cupertino;
+        \item Créer deux Widgets, un pour Android et l’autre pour iOS;
+        \item Il faut importer \lstinline[language=c]!Platform!.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\secname}
+    Ces propriétés retournent \lstinline[language=c]!true! si la plateforme est détectée au runtime.
+    \begin{itemize}
+        \item \lstinline[language=c]!Platform.isAndroid! pour détecter si le programme s’exécute sur;
+        \item \lstinline[language=c]!Platform.isFuchsia! pour détecter si le programme s’exécute sur Fuchsia;
+        \item \lstinline[language=c]!Platform.isIOS! pour détecter si le programme s’exécute sur iOS;
+        \item \lstinline[language=c]!Platform.isLinux! pour détecter si le programme s’exécute sur Linux;
+        \item \lstinline[language=c]!Platform.isMacOS! pour détecter si le programme s’exécute sur macOS.
+    \end{itemize}
+\end{frame}
+\begin{frame}[fragile]{\secname}
+    \begin{lstlisting}[language=C]
+@override
+Widget build(BuildContext context) {
+return Platform.isIOS ? myCupertinoApp() : myCupertinoApp();
+}
+    \end{lstlisting}
+    \lstinline[language=c]!myCupertinoApp! et \lstinline[language=c]!myCupertinoApp! étant des classes \lstinline[language=sql]!Widget! personelles.
+\end{frame}
+
+\end{document}
