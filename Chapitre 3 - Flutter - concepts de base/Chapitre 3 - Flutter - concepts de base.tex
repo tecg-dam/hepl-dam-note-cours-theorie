@@ -198,5 +198,110 @@ return Platform.isIOS ? myCupertinoApp() : myCupertinoApp();
     \end{lstlisting}
     \lstinline[language=c]!myCupertinoApp! et \lstinline[language=c]!myCupertinoApp! étant des classes \lstinline[language=sql]!Widget! personelles.
 \end{frame}
+\section{Médias}
+\begin{frame}[fragile]{\secname}
+    \begin{itemize}
+        \item Il est donc primordial de savoir intégrer des médias;
+        \item Les icônes sont l’un des outils les plus employés de nos jours;
+        \item Elles permettent d’obtenir une compréhension rapide simplement au travers d’un visuel;
+        \item Des conventions se sont mises en place.
+    \end{itemize}
+\end{frame}
+
+\subsection{Icônes}
+\begin{frame}[fragile]{\secname : \subsecname}
+    \begin{itemize}
+        \item L’insertion de l’icône peut être réalisée au travers du widget \lstinline[language=sql]!Icon!;
+        \item Ce dernier permet :
+              \begin{itemize}
+                  \item De définir la taille;
+                  \item Sa couleur.
+              \end{itemize}
+        \item Flutter offre un vaste choix d’icônes;
+        \item Soit en travaillant avec la classe Icons qui comporte une collection au style Material Design;
+        \item soit avec la \lstinline[language=sql]!classeCupertinoIcons! qui propose un style iOS.
+
+    \end{itemize}
+    \begin{lstlisting}[language=C]
+const Icon(
+    Icons.notifications,
+    size: 16,
+    color: kMainTextColor,
+),
+        \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{\secname : \subsecname}
+    \begin{center}
+        Il est possible de retrouver l’ensemble de ces icônes \linebreak
+        \href{https://material.io/resources/icons/?style=baseline}{material.io/resources/icons}
+    \end{center}
+\end{frame}
+\subsection{FontAwesome}
+\begin{frame}[fragile]{\secname : \subsecname}
+    \begin{itemize}
+        \item \href{https://fontawesome.com}{FontAwesome} est un site Internet bien connu des développeurs web.
+        \item Il offre une collection très importante d’icônes en tout genre.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\secname : \subsecname}
+    \begin{figure}
+        \begin{center}
+            \includegraphics[width=\textwidth]{../assets/img/FontAwesome.jpg}
+        \end{center}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{\secname : \subsecname}
+    \begin{figure}
+        \begin{center}
+            \includegraphics[width=\textwidth]{../assets/img/FontAwesome--pub-dev.jpg}
+        \end{center}
+    \end{figure}
+\end{frame}
+
+\section{Images}
+\begin{frame}[fragile]{\secname}
+    \begin{itemize}
+        \item Pour rendre une application agréable en termes d’expérience utilisateur, il est courant d’insérer des images.
+        \item Pour cela, plusieurs constructeurs nommés sont mis à disposition.
+        \item Ils correspondent aux différents types de provenance d’une image, celles incluses au projet ou celles venant directement du web.
+    \end{itemize}
+\end{frame}
+
+\section{Images}
+\begin{frame}[fragile]{\secname}
+    \begin{itemize}
+        \item Pour rendre une application agréable en termes d’expérience utilisateur, il est courant d’insérer des images.
+        \item Pour cela, plusieurs constructeurs nommés sont mis à disposition.
+        \item Ils correspondent aux différents types de provenance d’une image, celles incluses au projet ou celles venant directement du web.
+    \end{itemize}
+\end{frame}
+
+\subsection{Web}
+\begin{frame}[fragile]{\secname : \subsecname}
+    \begin{lstlisting}[language=C]
+ClipRRect(
+    borderRadius: kBorderRadiusItem,
+    child: Image.network(
+        'https://image.tmdb.org/t/p/w154/$path',
+        height: 230,
+        width: 154,
+    ),
+),
+\end{lstlisting}
+\end{frame}
+\subsection{Statique}
+\begin{frame}[fragile]{\secname : \subsecname}
+    \begin{lstlisting}[language=C]
+Image.asset(
+    'assets/img/actor_placeholder.jpg',
+    height: 190,
+    width: 154,
+    fit: BoxFit.fitWidth,
+);
+\end{lstlisting}
+\end{frame}
 
 \end{document}
