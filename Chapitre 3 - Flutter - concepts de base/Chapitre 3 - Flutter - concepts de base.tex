@@ -269,21 +269,11 @@ const Icon(
         \item Ils correspondent aux différents types de provenance d’une image, celles incluses au projet ou celles venant directement du web.
     \end{itemize}
 \end{frame}
-
-\section{Images}
-\begin{frame}[fragile]{\secname}
-    \begin{itemize}
-        \item Pour rendre une application agréable en termes d’expérience utilisateur, il est courant d’insérer des images.
-        \item Pour cela, plusieurs constructeurs nommés sont mis à disposition.
-        \item Ils correspondent aux différents types de provenance d’une image, celles incluses au projet ou celles venant directement du web.
-    \end{itemize}
-\end{frame}
-
 \subsection{Web}
 \begin{frame}[fragile]{\secname : \subsecname}
     \begin{lstlisting}[language=C]
 ClipRRect(
-    borderRadius: kBorderRadiusItem,
+borderRadius: kBorderRadiusItem,
     child: Image.network(
         'https://image.tmdb.org/t/p/w154/$path',
         height: 230,
@@ -301,6 +291,39 @@ Image.asset(
     width: 154,
     fit: BoxFit.fitWidth,
 );
+\end{lstlisting}
+    \begin{alertblock}{Attention}
+        Il faut impérativement charger l'image dans l'application dans le fichier \emph{pubspec.yaml}.
+    \end{alertblock}
+\end{frame}
+
+\section{Polices de caractères}
+\begin{frame}[fragile]{\secname}
+    Pour charger une police de caractères, il faut :
+    \begin{itemize}
+        \item Télécharger les fichiers dans un dossier du projet;
+        \item Déclarer la police de caractères dans le fichier \emph{pubspec.yaml};
+        \item Utiliser la police de caractères dans un widget spécifique.
+    \end{itemize}
+    \begin{lstlisting}[language=C]
+awesome_app/
+    fonts/
+        Raleway-Regular.ttf
+        Raleway-Italic.ttf
+        RobotoMono-Regular.ttf
+        RobotoMono-Bold.ttf
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{\secname}
+    Définir une police par défaut
+    \begin{lstlisting}[language=C]
+return MaterialApp(
+    title: 'Custom Fonts',
+    // Ici
+    theme: ThemeData(fontFamily: 'Raleway'),
+    home: const MyHomePage(),
+    );
 \end{lstlisting}
 \end{frame}
 
